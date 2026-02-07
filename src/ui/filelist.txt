@@ -1,0 +1,16 @@
+ui_comp_seconds.c
+ui_comp.c
+ui_Time.c
+ui_Day_Date_Month.c
+ui_Indoor_Weather.c
+ui.c
+ui_comp_hook.c
+ui_helpers.c
+ui_img_thermometer_icon_png.c
+ui_img_indoor_temperature_png.c
+ui_img_336602858.c
+fonts/ui_font_Airstrike100.c
+fonts/ui_font_Chillax120.c
+fonts/ui_font_Chillax80.c
+fonts/ui_font_ChillaxReg130.c
+fonts/ui_font_ChillaxReg70full.c
