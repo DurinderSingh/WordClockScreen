@@ -11,8 +11,8 @@ SET(SOURCES ui_comp_seconds.c
     ui_img_336602858.c
     fonts/ui_font_Airstrike100.c
     fonts/ui_font_Chillax120.c
-    fonts/ui_font_Chillax80.c
     fonts/ui_font_ChillaxReg130.c
-    fonts/ui_font_ChillaxReg70full.c)
+    fonts/ui_font_ChillaxReg70full.c
+    fonts/ui_font_Chillax100.c)
 
 add_library(ui ${SOURCES})

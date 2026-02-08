@@ -24,7 +24,7 @@ extern lv_obj_t * ui_Header_Panel;
 extern lv_obj_t * ui_living_room_icon;
 extern lv_obj_t * ui_Living_Room;
 extern lv_obj_t * ui_Full_Humidity_Panel;
-extern lv_obj_t * ui_Humidity_Icon;
+extern lv_obj_t * ui_Image1;
 extern lv_obj_t * ui_Humidity_Status;
 extern lv_obj_t * ui_temp_panel1;
 extern lv_obj_t * ui_Humidity;
@@ -41,7 +41,6 @@ extern lv_obj_t * uic_Header_Panel;
 extern lv_obj_t * uic_living_room_icon;
 extern lv_obj_t * uic_Living_Room;
 extern lv_obj_t * uic_Full_Humidity_Panel;
-extern lv_obj_t * uic_Humidity_Icon;
 extern lv_obj_t * uic_Humidity_Status;
 extern lv_obj_t * uic_Humidity;
 

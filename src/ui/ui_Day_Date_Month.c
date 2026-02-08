@@ -42,13 +42,13 @@ void ui_Day_Date_Month_screen_init(void)
 
     ui_day = lv_label_create(ui_Day_Date_Month);
     lv_obj_set_width(ui_day, 316);
-    lv_obj_set_height(ui_day, 91);
+    lv_obj_set_height(ui_day, 100);
     lv_obj_set_x(ui_day, 1);
     lv_obj_set_y(ui_day, 52);
     lv_obj_set_align(ui_day, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_day, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_day, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
-    lv_label_set_text(ui_day, "MON");
+    lv_label_set_text(ui_day, "SUN");
     lv_obj_set_style_text_color(ui_day, lv_color_hex(0x2CDDF1), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_day, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_day, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);

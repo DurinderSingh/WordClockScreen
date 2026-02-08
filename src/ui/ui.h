@@ -48,9 +48,9 @@ LV_IMG_DECLARE(ui_img_336602858);    // assets/humidity-water-drops-percent-blue
 // FONTS
 LV_FONT_DECLARE(ui_font_Airstrike100);
 LV_FONT_DECLARE(ui_font_Chillax120);
-LV_FONT_DECLARE(ui_font_Chillax80);
 LV_FONT_DECLARE(ui_font_ChillaxReg130);
 LV_FONT_DECLARE(ui_font_ChillaxReg70full);
+LV_FONT_DECLARE(ui_font_Chillax100);
 
 // UI INIT
 void ui_init(void);
