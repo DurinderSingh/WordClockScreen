@@ -44,7 +44,7 @@ void ui_Day_Date_Month_screen_init(void)
     lv_obj_set_width(ui_day, 316);
     lv_obj_set_height(ui_day, 100);
     lv_obj_set_x(ui_day, 1);
-    lv_obj_set_y(ui_day, 52);
+    lv_obj_set_y(ui_day, 59);
     lv_obj_set_align(ui_day, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_day, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_day, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);

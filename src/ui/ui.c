@@ -35,6 +35,7 @@ void ui_init(void)
     ui_Time_screen_init();
     ui_Day_Date_Month_screen_init();
     ui_Indoor_Weather_screen_init();
+    ui_Outdoor_Weather_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Time);
 }
@@ -44,4 +45,5 @@ void ui_destroy(void)
     ui_Time_screen_destroy();
     ui_Day_Date_Month_screen_destroy();
     ui_Indoor_Weather_screen_destroy();
+    ui_Outdoor_Weather_screen_destroy();
 }

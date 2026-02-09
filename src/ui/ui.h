@@ -32,6 +32,7 @@ extern "C" {
 #include "ui_Time.h"
 #include "ui_Day_Date_Month.h"
 #include "ui_Indoor_Weather.h"
+#include "ui_Outdoor_Weather.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -44,13 +45,23 @@ extern lv_obj_t * ui____initial_actions0;
 LV_IMG_DECLARE(ui_img_thermometer_icon_png);    // assets/thermometer_icon.png
 LV_IMG_DECLARE(ui_img_indoor_temperature_png);    // assets/indoor_temperature.png
 LV_IMG_DECLARE(ui_img_336602858);    // assets/humidity-water-drops-percent-blue-23963.png
+LV_IMG_DECLARE(ui_img_1641329436);    // assets/frame_00_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_10717917);    // assets/frame_01_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_761082266);    // assets/frame_02_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_1663658587);    // assets/frame_03_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_965326360);    // assets/frame_04_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_665285159);    // assets/frame_05_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_85079190);    // assets/frame_06_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_987655511);    // assets/frame_07_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_1533475108);    // assets/frame_08_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_97136411);    // assets/frame_09_delay-0.05s.png
 
 // FONTS
 LV_FONT_DECLARE(ui_font_Airstrike100);
+LV_FONT_DECLARE(ui_font_Chillax100);
 LV_FONT_DECLARE(ui_font_Chillax120);
 LV_FONT_DECLARE(ui_font_ChillaxReg130);
 LV_FONT_DECLARE(ui_font_ChillaxReg70full);
-LV_FONT_DECLARE(ui_font_Chillax100);
 
 // UI INIT
 void ui_init(void);

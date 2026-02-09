@@ -4,6 +4,8 @@
 #include "ui/ui.h"
 #include <WiFi.h>
 #include <time.h>
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
 
 // ========== WIFI CREDENTIALS ==========
 const char* ssid = "AirFiber-9WNmq1";        // ← CHANGE THIS
@@ -13,6 +15,15 @@ const char* password = "yevu5shae6HiT0Za"; // ← CHANGE THIS
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = 19800;  // IST = UTC+5:30 = 19800 seconds
 const int daylightOffset_sec = 0;
+
+// ============= Weather Settings =============
+String api_key = "12373532f7244e6095c50534260502";
+String latitude = "30.3390";  // Najafgarh coords
+String longitude = "76.5208";
+// Weather animation
+// Weather animation frames
+static int current_anim_frame = 0;
+static int total_anim_frames = 0;  // You'll set this based on weather
 
 // --- LOVYAN GFX SETUP ---
 class LGFX : public lgfx::LGFX_Device {
@@ -72,6 +83,7 @@ void my_disp_flush(lv_display_t *disp_drv, const lv_area_t *area, uint8_t *color
     tft.endWrite();
     lv_display_flush_ready(disp_drv);
 }
+
 
 // ----------------------------------------------------- CLOCK LOGIC --------------------------------------
 unsigned long last_tick = 0;
@@ -137,6 +149,193 @@ void update_clock() {
     }
 }
 
+// ================================================= WEATHER API =============================================
+#include <HTTPClient.h>
+#include <ArduinoJson.h>
+
+String weather_temp = "--";
+String weather_humidity = "--";
+String weather_description = "Loading...";
+int weather_code = 0;
+
+void fetch_weather() {
+    if (WiFi.status() != WL_CONNECTED) {
+        Serial.println("WiFi not ready for weather");
+        return;
+    }
+    
+    HTTPClient http;
+    String url = "http://api.open-meteo.com/v1/forecast?latitude=28.6139&longitude=76.9794&current=temperature_2m,relative_humidity_2m,weather_code&timezone=Asia/Kolkata";
+    
+    Serial.println("Fetching weather...");
+    http.begin(url);
+    int httpCode = http.GET();
+    
+    if (httpCode == HTTP_CODE_OK) {
+        String payload = http.getString();
+        JsonDocument doc;
+        
+        DeserializationError error = deserializeJson(doc, payload);
+        if (!error) {
+            weather_temp = String((int)doc["current"]["temperature_2m"].as<float>());
+            weather_humidity = String((int)doc["current"]["relative_humidity_2m"].as<float>());
+            weather_code = doc["current"]["weather_code"];
+            
+            Serial.print("Weather: ");
+            Serial.print(weather_temp);
+            Serial.print("°C, ");
+            Serial.print(weather_humidity);
+            Serial.print("%, Code: ");
+            Serial.println(weather_code);
+        }
+    }
+    http.end();
+}
+
+// ---------------------------------------------- Weather Description ----------------------------------------------
+
+const char* get_weather_description(int code) {
+    if (code == 0) return "Clear Sky";
+    if (code <= 3) return "Partly Cloudy";
+    if (code <= 48) return "Foggy";
+    if (code <= 67) return "Rainy";
+    if (code <= 77) return "Snowy";
+    if (code <= 82) return "Rain Showers";
+    if (code <= 86) return "Snow Showers";
+    if (code >= 95) return "Thunderstorm";
+    return "Unknown";
+}
+
+
+// ====================================================== WEATHER ANIMATIONS ===================================
+
+void update_weather_animation() {
+    if (current_screen != 3) return;
+    if (!ui_WeatherAnimIcon) return;
+    
+    // Only animate on clear/sunny weather
+    if (weather_code <= 1) {  // ← CHANGE BACK FROM if (true)
+        current_anim_frame++;
+        if (current_anim_frame >= 10) {
+            current_anim_frame = 0;
+        }
+        
+        switch(current_anim_frame) {
+            case 0: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_1641329436); break;
+            case 1: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_10717917); break;
+            case 2: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_761082266); break;
+            case 3: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_1663658587); break;
+            case 4: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_965326360); break;
+            case 5: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_665285159); break;
+            case 6: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_85079190); break;
+            case 7: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_987655511); break;
+            case 8: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_1533475108); break;
+            case 9: lv_img_set_src(ui_WeatherAnimIcon, &ui_img_97136411); break;
+        }
+        
+        lv_obj_invalidate(ui_WeatherAnimIcon);
+        lv_refr_now(NULL);
+    }
+}
+
+
+
+
+// #define MAX_RAIN_DROPS 30
+// #define MAX_SNOW_FLAKES 20
+
+// struct RainDrop {
+//     int16_t x, y;
+//     int16_t speed;
+// };
+
+// struct SnowFlake {
+//     int16_t x, y;
+//     int16_t speed;
+//     int16_t drift;
+// };
+
+// RainDrop rain_drops[MAX_RAIN_DROPS];
+// SnowFlake snow_flakes[MAX_SNOW_FLAKES];
+
+// void init_rain() {
+//     for (int i = 0; i < MAX_RAIN_DROPS; i++) {
+//         rain_drops[i].x = random(0, 320);
+//         rain_drops[i].y = random(-240, 0);
+//         rain_drops[i].speed = random(8, 15);
+//     }
+// }
+
+// void init_snow() {
+//     for (int i = 0; i < MAX_SNOW_FLAKES; i++) {
+//         snow_flakes[i].x = random(0, 320);
+//         snow_flakes[i].y = random(-240, 0);
+//         snow_flakes[i].speed = random(2, 5);
+//         snow_flakes[i].drift = random(-2, 3);
+//     }
+// }
+
+// void update_rain() {
+//     for (int i = 0; i < MAX_RAIN_DROPS; i++) {
+//         rain_drops[i].y += rain_drops[i].speed;
+        
+//         // Reset if off screen
+//         if (rain_drops[i].y > 240) {
+//             rain_drops[i].y = -10;
+//             rain_drops[i].x = random(0, 320);
+//         }
+//     }
+// }
+
+// void update_snow() {
+//     for (int i = 0; i < MAX_SNOW_FLAKES; i++) {
+//         snow_flakes[i].y += snow_flakes[i].speed;
+//         snow_flakes[i].x += snow_flakes[i].drift;
+        
+//         // Wrap horizontally
+//         if (snow_flakes[i].x < 0) snow_flakes[i].x = 320;
+//         if (snow_flakes[i].x > 320) snow_flakes[i].x = 0;
+        
+//         // Reset if off screen
+//         if (snow_flakes[i].y > 240) {
+//             snow_flakes[i].y = -10;
+//             snow_flakes[i].x = random(0, 320);
+//         }
+//     }
+// }
+
+// void draw_weather_animation() {
+//     if (current_screen != 3) return;  // Only on outdoor weather screen
+    
+//     if (weather_code >= 51 && weather_code <= 67) {
+//         // RAIN
+//         for (int i = 0; i < MAX_RAIN_DROPS; i++) {
+//             tft.drawFastVLine(rain_drops[i].x, rain_drops[i].y, 8, 0x5CFF);  // Light blue
+//         }
+//         update_rain();
+        
+//     } else if (weather_code >= 71 && weather_code <= 77) {
+//         // SNOW
+//         for (int i = 0; i < MAX_SNOW_FLAKES; i++) {
+//             tft.fillCircle(snow_flakes[i].x, snow_flakes[i].y, 2, 0xFFFF);  // White
+//         }
+//         update_snow();
+        
+//     } else if (weather_code >= 95) {
+//         // THUNDERSTORM (rain + occasional flash)
+//         for (int i = 0; i < MAX_RAIN_DROPS; i++) {
+//             tft.drawFastVLine(rain_drops[i].x, rain_drops[i].y, 10, 0xFFE0);  // Yellow tint
+//         }
+//         update_rain();
+        
+//         // Random lightning flash
+//         if (random(0, 100) > 97) {
+//             tft.fillScreen(0xFFFF);
+//             delay(50);
+//         }
+//     }
+// }
+
 
 // ------------------------------------------------------- SCREEN SWITCHING -------------------------------------------
 void switch_screen() {
@@ -172,6 +371,35 @@ void switch_screen() {
         lv_scr_load(ui_Indoor_Weather);
         current_screen = 2;
         lv_refr_now(NULL);
+
+    } else if (current_screen == 2) {
+    lv_scr_load(ui_Outdoor_Weather);
+    current_screen = 3;
+    
+    // Update weather labels (your existing code)
+    if (ui_OutdoorTemp) {
+        String temp_str = weather_temp + "°C";
+        lv_label_set_text(ui_OutdoorTemp, temp_str.c_str());
+    }
+    if (ui_OutdoorHumidity) {
+        String hum_str = weather_humidity + "%";
+        lv_label_set_text(ui_OutdoorHumidity, hum_str.c_str());
+    }
+    if (ui_WeatherDesc) {
+        const char* desc = get_weather_description(weather_code);
+        lv_label_set_text(ui_WeatherDesc, desc);
+    }
+    
+    // ← INIT ANIMATIONS BASED ON WEATHER
+    // if (weather_code >= 51 && weather_code <= 82) {
+    //     init_rain();
+    // } else if (weather_code >= 71 && weather_code <= 86) {
+    //     init_snow();
+    // } else if (weather_code >= 95) {
+    //     init_rain();  // Thunderstorm uses rain
+    // }
+    
+    lv_refr_now(NULL);
         
     } else {
     lv_scr_load(ui_Time);
@@ -197,125 +425,6 @@ void switch_screen() {
     lv_refr_now(NULL);
     }
 }
-
-// ----------------------------------------------------- Void Setup ----------------------------------------------------------
-
-// void setup()
-// {
-//     Serial.begin(115200);
-//     delay(1000); // Wait for Serial to be ready
-    
-//     Serial.println("\n\n=================================");
-//     Serial.println("=== ESP32-C3 WORD CLOCK STARTING ===");
-//     Serial.println("=================================\n");
-    
-//     // ========== CONNECT TO WIFI FIRST ==========
-//     Serial.println("========== WiFi Connection ==========");
-//     Serial.print("SSID: ");
-//     Serial.println(ssid);
-//     Serial.print("Password length: ");
-//     Serial.println(strlen(password));
-    
-//     WiFi.mode(WIFI_STA);
-//     WiFi.begin(ssid, password);
-    
-//     Serial.print("Connecting to WiFi");
-//     int wifi_attempts = 0;
-//     while (WiFi.status() != WL_CONNECTED && wifi_attempts < 20) {
-//         delay(500);
-//         Serial.print(".");
-//         wifi_attempts++;
-        
-//         // Detailed status every 10 attempts
-//         if (wifi_attempts % 10 == 0) {
-//             Serial.println();
-//             Serial.print("Status: ");
-//             switch(WiFi.status()) {
-//                 case WL_IDLE_STATUS: Serial.print("IDLE"); break;
-//                 case WL_NO_SSID_AVAIL: Serial.print("NO SSID - Check WiFi name!"); break;
-//                 case WL_CONNECT_FAILED: Serial.print("FAILED - Check password!"); break;
-//                 case WL_DISCONNECTED: Serial.print("DISCONNECTED"); break;
-//                 default: Serial.print("UNKNOWN"); break;
-//             }
-//             Serial.print(" | Trying again");
-//         }
-//     }
-//     Serial.println();
-    
-//     if (WiFi.status() == WL_CONNECTED) {
-//         Serial.println("\n✓ WiFi CONNECTED!");
-//         Serial.print("IP Address: ");
-//         Serial.println(WiFi.localIP());
-//         Serial.print("Signal Strength: ");
-//         Serial.print(WiFi.RSSI());
-//         Serial.println(" dBm");
-        
-//         // ========== GET TIME FROM NTP ==========
-//         Serial.println("\n========== Time Sync ==========");
-//         configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-        
-//         Serial.print("Syncing with NTP server");
-//         struct tm timeinfo;
-//         int ntp_attempts = 0;
-//         while (!getLocalTime(&timeinfo) && ntp_attempts < 10) {
-//             Serial.print(".");
-//             delay(500);
-//             ntp_attempts++;
-//         }
-//         Serial.println();
-        
-//         if (getLocalTime(&timeinfo)) {
-//             Serial.println("✓ Time SYNCED!");
-//             Serial.print("Current time: ");
-//             Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S IST");
-//         } else {
-//             Serial.println("✗ Time sync FAILED - using default time");
-//             struct timeval tv;
-//             tv.tv_sec = 1739005800; // Feb 8, 2026 13:30 IST
-//             settimeofday(&tv, NULL);
-//         }
-//     } else {
-//         Serial.println("\n✗ WiFi CONNECTION FAILED!");
-//         Serial.println("Using default time (no internet)");
-        
-//         struct timeval tv;
-//         tv.tv_sec = 1739005800; // Feb 8, 2026 13:30 IST
-//         settimeofday(&tv, NULL);
-//     }
-    
-//     Serial.println("\n========== Display Init ==========");
-//     tft.init();
-//     tft.setRotation(1);
-//     tft.setBrightness(255);
-//     Serial.println("✓ Display OK");
-
-//     lv_init();
-//     Serial.println("✓ LVGL OK");
-
-//     disp = lv_display_create(320, 240);
-//     lv_display_set_flush_cb(disp, my_disp_flush);
-//     lv_display_set_buffers(disp, buf, NULL, sizeof(buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
-//     lv_display_set_user_data(disp, &tft);
-//     Serial.println("✓ Display configured");
-
-//     ui_init();
-//     Serial.println("✓ UI initialized");
-
-//     // Configure bar animation
-//     if (ui_SecondBar) {
-//         lv_obj_set_style_anim_duration(ui_SecondBar, 900, LV_PART_INDICATOR);
-//     }
-    
-//     lv_scr_load(ui_Time);
-//     lv_refr_now(NULL);  // ← ADD THIS LINE
-//     Serial.println("✓ Clock screen loaded");
-    
-//     Serial.println("\n=================================");
-//     Serial.println("=== SETUP COMPLETE ===");
-//     Serial.println("=================================\n");
-//     Serial.println("Screens switch every 7 seconds");
-//     Serial.println("Clock updates every 1 second\n");
-// }
 
 
 void setup()
@@ -355,7 +464,10 @@ void setup()
     lv_refr_now(NULL);
     Serial.println("✓ LCD screen loaded");
     
-    // ========== 2. WORD CLOCK LED INIT (Add when ready) ==========
+
+    // ======================================= 2. WORD CLOCK LED INIT (Add when ready) =========================================
+
+
     // FastLED.addLeds<WS2812B, 2, GRB>(leds, NUM_LEDS);
     // FastLED.setBrightness(128);
     // displayWordTime(0, 0);  // Show placeholder
@@ -406,40 +518,24 @@ void setup()
     Serial.println("✓ Screens switch every 7 seconds\n");
 }
 
-
-// ------------------------------------------------------- Void Loop ---------------------------------------------------
-
-// void loop()
-// {
-//     static unsigned long last_screen_switch = 0;
-    
-//     // LVGL needs to run frequently
-//     lv_timer_handler();
-    
-//     // Update Clock every 1 second
-//     if (millis() - last_tick >= 1000) {
-//         last_tick = millis();
-//         update_clock();
-//     }
-    
-//     // Switch screens every 7 seconds
-//     if (millis() - last_screen_switch >= 7000) {
-//         last_screen_switch = millis();
-//         switch_screen();
-//     }
-    
-//     delay(5);
-// }
-
+// ----------------------------------------------------- Void Loop ----------------------------------------------------
 
 void loop()
 {
     static unsigned long last_screen_switch = 0;
+    static unsigned long last_weather_fetch = 0;
+     static unsigned long last_anim_update = 0;
     static bool wifi_connected = false;
     
     lv_timer_handler();
     
-    // ========== CHECK WIFI STATUS ==========
+    // ========== ANIMATE WEATHER ICON (10 FPS) ==========
+    if (current_screen == 3 && millis() - last_anim_update >= 100) {
+        last_anim_update = millis();
+        update_weather_animation();
+    }
+
+    // Check WiFi connection
     if (!wifi_connected && WiFi.status() == WL_CONNECTED) {
         wifi_connected = true;
         Serial.println("\n✓✓✓ WiFi Connected! ✓✓✓");
@@ -447,24 +543,28 @@ void loop()
         Serial.println(WiFi.localIP());
         
         // Sync NTP
-        Serial.println("Syncing NTP...");
         configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-        
         struct tm timeinfo;
         int attempts = 0;
         while (!getLocalTime(&timeinfo) && attempts < 10) {
             delay(500);
             attempts++;
         }
-        
         if (getLocalTime(&timeinfo)) {
             Serial.println("✓ NTP Synced!");
-            Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S IST");
         }
+        
+        // Fetch weather immediately
+        fetch_weather();
     }
-    // ========================================
     
-    // Update Clock every 1 second
+    // Update weather every 10 minutes
+    if (wifi_connected && millis() - last_weather_fetch >= 600000) {
+        last_weather_fetch = millis();
+        fetch_weather();
+    }
+    
+    // Update clock every second
     if (millis() - last_tick >= 1000) {
         last_tick = millis();
         update_clock();

@@ -205,7 +205,7 @@ void ui_Indoor_Weather_screen_init(void)
     lv_image_set_src(ui_Image1, &ui_img_336602858);
     lv_obj_set_width(ui_Image1, 32);
     lv_obj_set_height(ui_Image1, 32);
-    lv_obj_set_x(ui_Image1, 0);
+    lv_obj_set_x(ui_Image1, -2);
     lv_obj_set_y(ui_Image1, -70);
     lv_obj_set_align(ui_Image1, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Image1, LV_OBJ_FLAG_CLICKABLE);     /// Flags
