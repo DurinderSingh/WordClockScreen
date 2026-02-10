@@ -36,6 +36,8 @@ extern "C" {
 
 ///////////////////// VARIABLES ////////////////////
 
+extern lv_anim_t * RotatingSun_Animation(lv_obj_t * TargetObject, int delay);
+extern lv_anim_t * rotationtest_Animation(lv_obj_t * TargetObject, int delay);
 
 // EVENTS
 
@@ -45,16 +47,12 @@ extern lv_obj_t * ui____initial_actions0;
 LV_IMG_DECLARE(ui_img_thermometer_icon_png);    // assets/thermometer_icon.png
 LV_IMG_DECLARE(ui_img_indoor_temperature_png);    // assets/indoor_temperature.png
 LV_IMG_DECLARE(ui_img_336602858);    // assets/humidity-water-drops-percent-blue-23963.png
-LV_IMG_DECLARE(ui_img_1641329436);    // assets/frame_00_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_10717917);    // assets/frame_01_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_761082266);    // assets/frame_02_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_1663658587);    // assets/frame_03_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_965326360);    // assets/frame_04_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_665285159);    // assets/frame_05_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_85079190);    // assets/frame_06_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_987655511);    // assets/frame_07_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_1533475108);    // assets/frame_08_delay-0.05s.png
-LV_IMG_DECLARE(ui_img_97136411);    // assets/frame_09_delay-0.05s.png
+LV_IMG_DECLARE(ui_img_sun_png);    // assets/sun.png
+LV_IMG_DECLARE(ui_img_497089268);    // assets/full-moon.png
+LV_IMG_DECLARE(ui_img_cloud_png);    // assets/cloud.png
+LV_IMG_DECLARE(ui_img_storm_png);    // assets/storm.png
+LV_IMG_DECLARE(ui_img_fog_png);    // assets/fog.png
+LV_IMG_DECLARE(ui_img_cloudynight_png);    // assets/cloudynight.png
 
 // FONTS
 LV_FONT_DECLARE(ui_font_Airstrike100);

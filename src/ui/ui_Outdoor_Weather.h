@@ -13,17 +13,31 @@ extern "C" {
 // SCREEN: ui_Outdoor_Weather
 extern void ui_Outdoor_Weather_screen_init(void);
 extern void ui_Outdoor_Weather_screen_destroy(void);
+extern void ui_event_Outdoor_Weather(lv_event_t * e);
 extern lv_obj_t * ui_Outdoor_Weather;
-extern lv_obj_t * ui_WeatherAnimIcon;
-extern lv_obj_t * ui_OutdoorTemp;
-extern lv_obj_t * ui_OutdoorHumidity;
+extern void ui_event_SunIcon(lv_event_t * e);
+extern lv_obj_t * ui_SunIcon;
+extern lv_obj_t * ui_MoonIcon;
+extern lv_obj_t * ui_CloudIcon;
+extern lv_obj_t * ui_RainIcon;
+extern lv_obj_t * ui_FogIcon;
+extern lv_obj_t * ui_CloudyNightIcon;
 extern lv_obj_t * ui_WeatherDesc;
+extern lv_obj_t * ui_Panel2;
+extern lv_obj_t * ui_OutdoorTemp;
+extern lv_obj_t * ui_Celcious;
+extern lv_obj_t * ui_OutdoorHumidity;
 // CUSTOM VARIABLES
-extern lv_obj_t * uic_Outdoor_Weather;
-extern lv_obj_t * uic_WeatherAnimIcon;
-extern lv_obj_t * uic_OutdoorTemp;
-extern lv_obj_t * uic_OutdoorHumidity;
-extern lv_obj_t * uic_WeatherDesc;
+extern lv_obj_t * ui_Outdoor_Weather;
+extern lv_obj_t * ui_SunIcon;
+extern lv_obj_t * ui_MoonIcon;
+extern lv_obj_t * ui_CloudIcon;
+extern lv_obj_t * ui_RainIcon;
+extern lv_obj_t * ui_CloudyNightIcon;
+extern lv_obj_t * ui_WeatherDesc;
+extern lv_obj_t * ui_OutdoorTemp;
+extern lv_obj_t * ui_Celcious;
+extern lv_obj_t * ui_OutdoorHumidity;
 
 #ifdef __cplusplus
 } /*extern "C"*/

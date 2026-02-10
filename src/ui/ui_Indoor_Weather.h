@@ -30,19 +30,19 @@ extern lv_obj_t * ui_temp_panel1;
 extern lv_obj_t * ui_Humidity;
 extern lv_obj_t * ui_dcelcius1;
 // CUSTOM VARIABLES
-extern lv_obj_t * uic_Indoor_Weather;
-extern lv_obj_t * uic_Full_Temp_Panel;
-extern lv_obj_t * uic_temp_icon;
-extern lv_obj_t * uic_temp_panel;
-extern lv_obj_t * uic_temp;
-extern lv_obj_t * uic_dcelcius;
-extern lv_obj_t * uic_Temp_Status;
-extern lv_obj_t * uic_Header_Panel;
-extern lv_obj_t * uic_living_room_icon;
-extern lv_obj_t * uic_Living_Room;
-extern lv_obj_t * uic_Full_Humidity_Panel;
-extern lv_obj_t * uic_Humidity_Status;
-extern lv_obj_t * uic_Humidity;
+extern lv_obj_t * ui_Indoor_Weather;
+extern lv_obj_t * ui_Full_Temp_Panel;
+extern lv_obj_t * ui_temp_icon;
+extern lv_obj_t * ui_temp_panel;
+extern lv_obj_t * ui_temp;
+extern lv_obj_t * ui_dcelcius;
+extern lv_obj_t * ui_Temp_Status;
+extern lv_obj_t * ui_Header_Panel;
+extern lv_obj_t * ui_living_room_icon;
+extern lv_obj_t * ui_Living_Room;
+extern lv_obj_t * ui_Full_Humidity_Panel;
+extern lv_obj_t * ui_Humidity_Status;
+extern lv_obj_t * ui_Humidity;
 
 #ifdef __cplusplus
 } /*extern "C"*/

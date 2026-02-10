@@ -8,3 +8,7 @@
 void ui_comp_Seconds_create_hook(lv_obj_t * comp)
 {
 }
+
+void ui_comp_thermorot_create_hook(lv_obj_t * comp)
+{
+}

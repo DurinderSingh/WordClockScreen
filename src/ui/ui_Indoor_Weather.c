@@ -5,19 +5,19 @@
 
 #include "ui.h"
 
-lv_obj_t * uic_Humidity;
-lv_obj_t * uic_Humidity_Status;
-lv_obj_t * uic_Full_Humidity_Panel;
-lv_obj_t * uic_Living_Room;
-lv_obj_t * uic_living_room_icon;
-lv_obj_t * uic_Header_Panel;
-lv_obj_t * uic_Temp_Status;
-lv_obj_t * uic_dcelcius;
-lv_obj_t * uic_temp;
-lv_obj_t * uic_temp_panel;
-lv_obj_t * uic_temp_icon;
-lv_obj_t * uic_Full_Temp_Panel;
-lv_obj_t * uic_Indoor_Weather;
+lv_obj_t * ui_Humidity;
+lv_obj_t * ui_Humidity_Status;
+lv_obj_t * ui_Full_Humidity_Panel;
+lv_obj_t * ui_Living_Room;
+lv_obj_t * ui_living_room_icon;
+lv_obj_t * ui_Header_Panel;
+lv_obj_t * ui_Temp_Status;
+lv_obj_t * ui_dcelcius;
+lv_obj_t * ui_temp;
+lv_obj_t * ui_temp_panel;
+lv_obj_t * ui_temp_icon;
+lv_obj_t * ui_Full_Temp_Panel;
+lv_obj_t * ui_Indoor_Weather;
 lv_obj_t * ui_Indoor_Weather = NULL;
 lv_obj_t * ui_Full_Temp_Panel = NULL;
 lv_obj_t * ui_temp_icon = NULL;
@@ -260,19 +260,19 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_style_text_opa(ui_dcelcius1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_dcelcius1, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    uic_Indoor_Weather = ui_Indoor_Weather;
-    uic_Full_Temp_Panel = ui_Full_Temp_Panel;
-    uic_temp_icon = ui_temp_icon;
-    uic_temp_panel = ui_temp_panel;
-    uic_temp = ui_temp;
-    uic_dcelcius = ui_dcelcius;
-    uic_Temp_Status = ui_Temp_Status;
-    uic_Header_Panel = ui_Header_Panel;
-    uic_living_room_icon = ui_living_room_icon;
-    uic_Living_Room = ui_Living_Room;
-    uic_Full_Humidity_Panel = ui_Full_Humidity_Panel;
-    uic_Humidity_Status = ui_Humidity_Status;
-    uic_Humidity = ui_Humidity;
+    ui_Indoor_Weather = ui_Indoor_Weather;
+    ui_Full_Temp_Panel = ui_Full_Temp_Panel;
+    ui_temp_icon = ui_temp_icon;
+    ui_temp_panel = ui_temp_panel;
+    ui_temp = ui_temp;
+    ui_dcelcius = ui_dcelcius;
+    ui_Temp_Status = ui_Temp_Status;
+    ui_Header_Panel = ui_Header_Panel;
+    ui_living_room_icon = ui_living_room_icon;
+    ui_Living_Room = ui_Living_Room;
+    ui_Full_Humidity_Panel = ui_Full_Humidity_Panel;
+    ui_Humidity_Status = ui_Humidity_Status;
+    ui_Humidity = ui_Humidity;
 
 }
 
@@ -281,33 +281,33 @@ void ui_Indoor_Weather_screen_destroy(void)
     if(ui_Indoor_Weather) lv_obj_del(ui_Indoor_Weather);
 
     // NULL screen variables
-    uic_Indoor_Weather = NULL;
     ui_Indoor_Weather = NULL;
-    uic_Full_Temp_Panel = NULL;
+    ui_Indoor_Weather = NULL;
     ui_Full_Temp_Panel = NULL;
-    uic_temp_icon = NULL;
+    ui_Full_Temp_Panel = NULL;
     ui_temp_icon = NULL;
-    uic_temp_panel = NULL;
+    ui_temp_icon = NULL;
     ui_temp_panel = NULL;
-    uic_temp = NULL;
+    ui_temp_panel = NULL;
     ui_temp = NULL;
-    uic_dcelcius = NULL;
+    ui_temp = NULL;
     ui_dcelcius = NULL;
-    uic_Temp_Status = NULL;
+    ui_dcelcius = NULL;
     ui_Temp_Status = NULL;
-    uic_Header_Panel = NULL;
+    ui_Temp_Status = NULL;
     ui_Header_Panel = NULL;
-    uic_living_room_icon = NULL;
+    ui_Header_Panel = NULL;
     ui_living_room_icon = NULL;
-    uic_Living_Room = NULL;
+    ui_living_room_icon = NULL;
     ui_Living_Room = NULL;
-    uic_Full_Humidity_Panel = NULL;
+    ui_Living_Room = NULL;
+    ui_Full_Humidity_Panel = NULL;
     ui_Full_Humidity_Panel = NULL;
     ui_Image1 = NULL;
-    uic_Humidity_Status = NULL;
+    ui_Humidity_Status = NULL;
     ui_Humidity_Status = NULL;
     ui_temp_panel1 = NULL;
-    uic_Humidity = NULL;
+    ui_Humidity = NULL;
     ui_Humidity = NULL;
     ui_dcelcius1 = NULL;
 

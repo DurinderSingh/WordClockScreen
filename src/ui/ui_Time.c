@@ -5,10 +5,10 @@
 
 #include "ui.h"
 
-lv_obj_t * uic_SecondBar;
-lv_obj_t * uic_LabelMinutes;
-lv_obj_t * uic_LabelHour;
-lv_obj_t * uic_Time;
+lv_obj_t * ui_SecondBar;
+lv_obj_t * ui_LabelMinutes;
+lv_obj_t * ui_LabelHour;
+lv_obj_t * ui_Time;
 lv_obj_t * ui_Time = NULL;
 lv_obj_t * ui_LabelHour = NULL;
 lv_obj_t * ui_LabelMinutes = NULL;
@@ -97,10 +97,10 @@ void ui_Time_screen_init(void)
     lv_obj_set_style_text_align(ui_LabelSeconds, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_LabelSeconds, &ui_font_Airstrike100, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    uic_Time = ui_Time;
-    uic_LabelHour = ui_LabelHour;
-    uic_LabelMinutes = ui_LabelMinutes;
-    uic_SecondBar = ui_SecondBar;
+    ui_Time = ui_Time;
+    ui_LabelHour = ui_LabelHour;
+    ui_LabelMinutes = ui_LabelMinutes;
+    ui_SecondBar = ui_SecondBar;
 
 }
 
@@ -109,13 +109,13 @@ void ui_Time_screen_destroy(void)
     if(ui_Time) lv_obj_del(ui_Time);
 
     // NULL screen variables
-    uic_Time = NULL;
     ui_Time = NULL;
-    uic_LabelHour = NULL;
+    ui_Time = NULL;
     ui_LabelHour = NULL;
-    uic_LabelMinutes = NULL;
+    ui_LabelHour = NULL;
     ui_LabelMinutes = NULL;
-    uic_SecondBar = NULL;
+    ui_LabelMinutes = NULL;
+    ui_SecondBar = NULL;
     ui_SecondBar = NULL;
     ui_LabelSeconds = NULL;
 

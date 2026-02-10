@@ -26,3 +26,8 @@ desktop.ini
 *.tmp
 *.bak
 *.log
+
+
+# Credentials - NEVER COMMIT THESE
+credentials.h
+secrets.h

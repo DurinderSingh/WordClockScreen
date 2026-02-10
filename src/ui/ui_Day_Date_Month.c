@@ -5,10 +5,10 @@
 
 #include "ui.h"
 
-lv_obj_t * uic_Month;
-lv_obj_t * uic_day;
-lv_obj_t * uic_date;
-lv_obj_t * uic_Day_Date_Month;
+lv_obj_t * ui_Month;
+lv_obj_t * ui_day;
+lv_obj_t * ui_date;
+lv_obj_t * ui_Day_Date_Month;
 lv_obj_t * ui_Day_Date_Month = NULL;
 lv_obj_t * ui_date = NULL;
 lv_obj_t * ui_day = NULL;
@@ -68,10 +68,10 @@ void ui_Day_Date_Month_screen_init(void)
     lv_obj_set_style_text_align(ui_Month, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Month, &ui_font_ChillaxReg70full, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    uic_Day_Date_Month = ui_Day_Date_Month;
-    uic_date = ui_date;
-    uic_day = ui_day;
-    uic_Month = ui_Month;
+    ui_Day_Date_Month = ui_Day_Date_Month;
+    ui_date = ui_date;
+    ui_day = ui_day;
+    ui_Month = ui_Month;
 
 }
 
@@ -80,13 +80,13 @@ void ui_Day_Date_Month_screen_destroy(void)
     if(ui_Day_Date_Month) lv_obj_del(ui_Day_Date_Month);
 
     // NULL screen variables
-    uic_Day_Date_Month = NULL;
     ui_Day_Date_Month = NULL;
-    uic_date = NULL;
+    ui_Day_Date_Month = NULL;
     ui_date = NULL;
-    uic_day = NULL;
+    ui_date = NULL;
     ui_day = NULL;
-    uic_Month = NULL;
+    ui_day = NULL;
+    ui_Month = NULL;
     ui_Month = NULL;
 
 }

@@ -3,15 +3,19 @@
 // LVGL version: 9.3
 // Project name: LCD_Screen
 
-#ifndef _LCD_SCREEN_UI_COMP_HOOK_H
-#define _LCD_SCREEN_UI_COMP_HOOK_H
+#ifndef _UI_COMP_THERMOROT_H
+#define _UI_COMP_THERMOROT_H
+
+#include "ui.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void ui_comp_Seconds_create_hook(lv_obj_t * comp);
-void ui_comp_thermorot_create_hook(lv_obj_t * comp);
+// COMPONENT thermorot
+#define UI_COMP_THERMOROT_THERMOROT 0
+#define _UI_COMP_THERMOROT_NUM 1
+lv_obj_t * ui_thermorot_create(lv_obj_t * comp_parent);
 
 #ifdef __cplusplus
 } /*extern "C"*/

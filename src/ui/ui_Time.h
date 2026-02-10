@@ -19,10 +19,10 @@ extern lv_obj_t * ui_LabelMinutes;
 extern lv_obj_t * ui_SecondBar;
 extern lv_obj_t * ui_LabelSeconds;
 // CUSTOM VARIABLES
-extern lv_obj_t * uic_Time;
-extern lv_obj_t * uic_LabelHour;
-extern lv_obj_t * uic_LabelMinutes;
-extern lv_obj_t * uic_SecondBar;
+extern lv_obj_t * ui_Time;
+extern lv_obj_t * ui_LabelHour;
+extern lv_obj_t * ui_LabelMinutes;
+extern lv_obj_t * ui_SecondBar;
 
 #ifdef __cplusplus
 } /*extern "C"*/

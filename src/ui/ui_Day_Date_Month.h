@@ -18,10 +18,10 @@ extern lv_obj_t * ui_date;
 extern lv_obj_t * ui_day;
 extern lv_obj_t * ui_Month;
 // CUSTOM VARIABLES
-extern lv_obj_t * uic_Day_Date_Month;
-extern lv_obj_t * uic_date;
-extern lv_obj_t * uic_day;
-extern lv_obj_t * uic_Month;
+extern lv_obj_t * ui_Day_Date_Month;
+extern lv_obj_t * ui_date;
+extern lv_obj_t * ui_day;
+extern lv_obj_t * ui_Month;
 
 #ifdef __cplusplus
 } /*extern "C"*/
