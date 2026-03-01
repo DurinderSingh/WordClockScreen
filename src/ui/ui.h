@@ -23,8 +23,6 @@ extern "C" {
 #endif
 
 #include "ui_helpers.h"
-#include "ui_comp.h"
-#include "ui_comp_hook.h"
 #include "ui_events.h"
 
 ///////////////////// SCREENS ////////////////////
@@ -33,11 +31,13 @@ extern "C" {
 #include "ui_Day_Date_Month.h"
 #include "ui_Indoor_Weather.h"
 #include "ui_Outdoor_Weather.h"
+#include "ui_AQIHumidity.h"
 
 ///////////////////// VARIABLES ////////////////////
 
 extern lv_anim_t * RotatingSun_Animation(lv_obj_t * TargetObject, int delay);
 extern lv_anim_t * rotationtest_Animation(lv_obj_t * TargetObject, int delay);
+extern lv_anim_t * Blink_Animation(lv_obj_t * TargetObject, int delay);
 
 // EVENTS
 
@@ -45,7 +45,7 @@ extern lv_obj_t * ui____initial_actions0;
 
 // IMAGES AND IMAGE SETS
 LV_IMG_DECLARE(ui_img_thermometer_icon_png);    // assets/thermometer_icon.png
-LV_IMG_DECLARE(ui_img_indoor_temperature_png);    // assets/indoor_temperature.png
+LV_IMG_DECLARE(ui_img_902301562);    // assets/pet-friendly.png
 LV_IMG_DECLARE(ui_img_336602858);    // assets/humidity-water-drops-percent-blue-23963.png
 LV_IMG_DECLARE(ui_img_sun_png);    // assets/sun.png
 LV_IMG_DECLARE(ui_img_497089268);    // assets/full-moon.png
@@ -53,13 +53,18 @@ LV_IMG_DECLARE(ui_img_cloud_png);    // assets/cloud.png
 LV_IMG_DECLARE(ui_img_storm_png);    // assets/storm.png
 LV_IMG_DECLARE(ui_img_fog_png);    // assets/fog.png
 LV_IMG_DECLARE(ui_img_cloudynight_png);    // assets/cloudynight.png
+LV_IMG_DECLARE(ui_img_390541528);    // assets/air-quality-index.png
+LV_IMG_DECLARE(ui_img_humidity1_png);    // assets/humidity1.png
 
 // FONTS
-LV_FONT_DECLARE(ui_font_Airstrike100);
 LV_FONT_DECLARE(ui_font_Chillax100);
 LV_FONT_DECLARE(ui_font_Chillax120);
 LV_FONT_DECLARE(ui_font_ChillaxReg130);
 LV_FONT_DECLARE(ui_font_ChillaxReg70full);
+LV_FONT_DECLARE(ui_font_DateFont);
+LV_FONT_DECLARE(ui_font_Jersy);
+LV_FONT_DECLARE(ui_font_Mythical);
+LV_FONT_DECLARE(ui_font_TimeFont);
 
 // UI INIT
 void ui_init(void);

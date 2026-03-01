@@ -42,7 +42,7 @@ void ui_Indoor_Weather_screen_init(void)
 {
     ui_Indoor_Weather = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_Indoor_Weather, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_bg_color(ui_Indoor_Weather, lv_color_hex(0x091425), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Indoor_Weather, lv_color_hex(0x0F0F0F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Indoor_Weather, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_set_style_bg_color(ui_Indoor_Weather, lv_color_hex(0xFFFFFF), LV_PART_SCROLLBAR | LV_STATE_DEFAULT);
@@ -51,12 +51,12 @@ void ui_Indoor_Weather_screen_init(void)
     ui_Full_Temp_Panel = lv_obj_create(ui_Indoor_Weather);
     lv_obj_set_width(ui_Full_Temp_Panel, 148);
     lv_obj_set_height(ui_Full_Temp_Panel, 180);
-    lv_obj_set_x(ui_Full_Temp_Panel, -78);
+    lv_obj_set_x(ui_Full_Temp_Panel, -79);
     lv_obj_set_y(ui_Full_Temp_Panel, 20);
     lv_obj_set_align(ui_Full_Temp_Panel, LV_ALIGN_CENTER);
     lv_obj_remove_flag(ui_Full_Temp_Panel, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_bg_color(ui_Full_Temp_Panel, lv_color_hex(0x0C0C0D), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_Full_Temp_Panel, 200, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Full_Temp_Panel, lv_color_hex(0x0F0F0F), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_Full_Temp_Panel, 125, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_color(ui_Full_Temp_Panel, lv_color_hex(0x201F1F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_Full_Temp_Panel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_Full_Temp_Panel, 1, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -69,10 +69,10 @@ void ui_Indoor_Weather_screen_init(void)
 
     ui_temp_icon = lv_image_create(ui_Full_Temp_Panel);
     lv_image_set_src(ui_temp_icon, &ui_img_thermometer_icon_png);
-    lv_obj_set_width(ui_temp_icon, 32);
-    lv_obj_set_height(ui_temp_icon, 32);
-    lv_obj_set_x(ui_temp_icon, 1);
-    lv_obj_set_y(ui_temp_icon, -70);
+    lv_obj_set_width(ui_temp_icon, 40);
+    lv_obj_set_height(ui_temp_icon, 40);
+    lv_obj_set_x(ui_temp_icon, -50);
+    lv_obj_set_y(ui_temp_icon, -62);
     lv_obj_set_align(ui_temp_icon, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_temp_icon, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_remove_flag(ui_temp_icon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -102,9 +102,9 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_x(ui_temp, -12);
     lv_obj_set_y(ui_temp, -5);
     lv_obj_set_align(ui_temp, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_temp, "88");
+    lv_label_set_text(ui_temp, "23");
     lv_obj_add_flag(ui_temp, LV_OBJ_FLAG_CLICKABLE);     /// Flags
-    lv_obj_set_style_text_color(ui_temp, lv_color_hex(0x269AFA), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_temp, lv_color_hex(0xFBF5F3), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_temp, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_temp, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_temp, &ui_font_Chillax100, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -118,7 +118,7 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_flex_flow(ui_dcelcius, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_dcelcius, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
     lv_label_set_text(ui_dcelcius, "°C");
-    lv_obj_set_style_text_color(ui_dcelcius, lv_color_hex(0x11EDA8), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_dcelcius, lv_color_hex(0x60FF66), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_dcelcius, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_dcelcius, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 
@@ -131,16 +131,16 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_flex_flow(ui_Temp_Status, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_Temp_Status, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
     lv_label_set_text(ui_Temp_Status, "Slightly Cool");
-    lv_obj_set_style_text_color(ui_Temp_Status, lv_color_hex(0x22E1EC), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_Temp_Status, lv_color_hex(0x60FF66), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Temp_Status, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Temp_Status, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Temp_Status, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Header_Panel = lv_obj_create(ui_Indoor_Weather);
-    lv_obj_set_width(ui_Header_Panel, 188);
-    lv_obj_set_height(ui_Header_Panel, 34);
-    lv_obj_set_x(ui_Header_Panel, 0);
-    lv_obj_set_y(ui_Header_Panel, -99);
+    lv_obj_set_width(ui_Header_Panel, 243);
+    lv_obj_set_height(ui_Header_Panel, 42);
+    lv_obj_set_x(ui_Header_Panel, -6);
+    lv_obj_set_y(ui_Header_Panel, -96);
     lv_obj_set_align(ui_Header_Panel, LV_ALIGN_CENTER);
     lv_obj_remove_flag(ui_Header_Panel, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_bg_color(ui_Header_Panel, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -155,11 +155,11 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_style_pad_bottom(ui_Header_Panel, 5, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_living_room_icon = lv_image_create(ui_Header_Panel);
-    lv_image_set_src(ui_living_room_icon, &ui_img_indoor_temperature_png);
-    lv_obj_set_width(ui_living_room_icon, 32);
-    lv_obj_set_height(ui_living_room_icon, 32);
-    lv_obj_set_x(ui_living_room_icon, -64);
-    lv_obj_set_y(ui_living_room_icon, 1);
+    lv_image_set_src(ui_living_room_icon, &ui_img_902301562);
+    lv_obj_set_width(ui_living_room_icon, 48);
+    lv_obj_set_height(ui_living_room_icon, 48);
+    lv_obj_set_x(ui_living_room_icon, -79);
+    lv_obj_set_y(ui_living_room_icon, 2);
     lv_obj_set_align(ui_living_room_icon, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_living_room_icon, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_remove_flag(ui_living_room_icon, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
@@ -170,13 +170,13 @@ void ui_Indoor_Weather_screen_init(void)
     ui_Living_Room = lv_label_create(ui_Header_Panel);
     lv_obj_set_width(ui_Living_Room, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_Living_Room, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_Living_Room, 23);
-    lv_obj_set_y(ui_Living_Room, 1);
+    lv_obj_set_x(ui_Living_Room, 35);
+    lv_obj_set_y(ui_Living_Room, 3);
     lv_obj_set_align(ui_Living_Room, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Living_Room, "Living Room");
-    lv_obj_set_style_text_color(ui_Living_Room, lv_color_hex(0x17EAE7), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_Living_Room, lv_color_hex(0x6CF3F2), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Living_Room, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_Living_Room, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_Living_Room, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Full_Humidity_Panel = lv_obj_create(ui_Indoor_Weather);
     lv_obj_set_width(ui_Full_Humidity_Panel, 148);
@@ -185,7 +185,7 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_y(ui_Full_Humidity_Panel, 20);
     lv_obj_set_align(ui_Full_Humidity_Panel, LV_ALIGN_CENTER);
     lv_obj_remove_flag(ui_Full_Humidity_Panel, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_bg_color(ui_Full_Humidity_Panel, lv_color_hex(0x0C0C0D), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Full_Humidity_Panel, lv_color_hex(0x0F0F0F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Full_Humidity_Panel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_color(ui_Full_Humidity_Panel, lv_color_hex(0x201F1F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_Full_Humidity_Panel, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -203,24 +203,24 @@ void ui_Indoor_Weather_screen_init(void)
 
     ui_Image1 = lv_image_create(ui_Full_Humidity_Panel);
     lv_image_set_src(ui_Image1, &ui_img_336602858);
-    lv_obj_set_width(ui_Image1, 32);
-    lv_obj_set_height(ui_Image1, 32);
-    lv_obj_set_x(ui_Image1, -2);
-    lv_obj_set_y(ui_Image1, -70);
+    lv_obj_set_width(ui_Image1, 40);
+    lv_obj_set_height(ui_Image1, 40);
+    lv_obj_set_x(ui_Image1, -48);
+    lv_obj_set_y(ui_Image1, -63);
     lv_obj_set_align(ui_Image1, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_Image1, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_remove_flag(ui_Image1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_image_set_inner_align(ui_Image1, LV_IMAGE_ALIGN_STRETCH);
 
     ui_Humidity_Status = lv_label_create(ui_Full_Humidity_Panel);
-    lv_obj_set_width(ui_Humidity_Status, 119);
+    lv_obj_set_width(ui_Humidity_Status, 135);
     lv_obj_set_height(ui_Humidity_Status, LV_SIZE_CONTENT);    /// 11
-    lv_obj_set_x(ui_Humidity_Status, 1);
-    lv_obj_set_y(ui_Humidity_Status, 70);
+    lv_obj_set_x(ui_Humidity_Status, 0);
+    lv_obj_set_y(ui_Humidity_Status, 71);
     lv_obj_set_align(ui_Humidity_Status, LV_ALIGN_CENTER);
     lv_label_set_long_mode(ui_Humidity_Status, LV_LABEL_LONG_MODE_SCROLL_CIRCULAR);
     lv_label_set_text(ui_Humidity_Status, "Slightly Humid");
-    lv_obj_set_style_text_color(ui_Humidity_Status, lv_color_hex(0x22E1EC), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_Humidity_Status, lv_color_hex(0x60FF66), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Humidity_Status, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Humidity_Status, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Humidity_Status, &lv_font_montserrat_20, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -244,7 +244,7 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_align(ui_Humidity, LV_ALIGN_CENTER);
     lv_label_set_text(ui_Humidity, "44");
     lv_obj_add_flag(ui_Humidity, LV_OBJ_FLAG_CLICKABLE);     /// Flags
-    lv_obj_set_style_text_color(ui_Humidity, lv_color_hex(0x269AFA), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_Humidity, lv_color_hex(0xFBF5F3), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Humidity, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Humidity, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Humidity, &ui_font_Chillax100, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -256,7 +256,7 @@ void ui_Indoor_Weather_screen_init(void)
     lv_obj_set_y(ui_dcelcius1, 15);
     lv_obj_set_align(ui_dcelcius1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_dcelcius1, "%");
-    lv_obj_set_style_text_color(ui_dcelcius1, lv_color_hex(0x11EDA8), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_dcelcius1, lv_color_hex(0x60FF66), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_dcelcius1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_dcelcius1, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 

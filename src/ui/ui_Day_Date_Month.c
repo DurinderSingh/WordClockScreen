@@ -21,19 +21,19 @@ void ui_Day_Date_Month_screen_init(void)
 {
     ui_Day_Date_Month = lv_obj_create(NULL);
     lv_obj_remove_flag(ui_Day_Date_Month, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_bg_color(ui_Day_Date_Month, lv_color_hex(0x091425), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_Day_Date_Month, lv_color_hex(0x0F0F0F), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_Day_Date_Month, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_date = lv_label_create(ui_Day_Date_Month);
-    lv_obj_set_width(ui_date, lv_pct(51));
-    lv_obj_set_height(ui_date, lv_pct(41));
-    lv_obj_set_x(ui_date, -79);
-    lv_obj_set_y(ui_date, -54);
+    lv_obj_set_width(ui_date, LV_SIZE_CONTENT);   /// 51
+    lv_obj_set_height(ui_date, LV_SIZE_CONTENT);    /// 57
+    lv_obj_set_x(ui_date, -80);
+    lv_obj_set_y(ui_date, -58);
     lv_obj_set_align(ui_date, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_date, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_date, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
-    lv_label_set_text(ui_date, "08");
-    lv_obj_set_style_text_color(ui_date, lv_color_hex(0x71FA2D), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_label_set_text(ui_date, "03");
+    lv_obj_set_style_text_color(ui_date, lv_color_hex(0xFF8811), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_date, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui_date, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui_date, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -43,27 +43,27 @@ void ui_Day_Date_Month_screen_init(void)
     ui_day = lv_label_create(ui_Day_Date_Month);
     lv_obj_set_width(ui_day, 316);
     lv_obj_set_height(ui_day, 100);
-    lv_obj_set_x(ui_day, 1);
-    lv_obj_set_y(ui_day, 59);
+    lv_obj_set_x(ui_day, 0);
+    lv_obj_set_y(ui_day, 54);
     lv_obj_set_align(ui_day, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_day, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_day, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
-    lv_label_set_text(ui_day, "SUN");
-    lv_obj_set_style_text_color(ui_day, lv_color_hex(0x2CDDF1), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_label_set_text(ui_day, "SAT");
+    lv_obj_set_style_text_color(ui_day, lv_color_hex(0xCED0CE), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_day, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_day, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_day, &ui_font_Chillax120, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Month = lv_label_create(ui_Day_Date_Month);
-    lv_obj_set_width(ui_Month, 162);
+    lv_obj_set_width(ui_Month, 161);
     lv_obj_set_height(ui_Month, 58);
-    lv_obj_set_x(ui_Month, 82);
+    lv_obj_set_x(ui_Month, 78);
     lv_obj_set_y(ui_Month, -37);
     lv_obj_set_align(ui_Month, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_Month, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_Month, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
-    lv_label_set_text(ui_Month, "DEC");
-    lv_obj_set_style_text_color(ui_Month, lv_color_hex(0x77CFCE), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_label_set_text(ui_Month, "MAR");
+    lv_obj_set_style_text_color(ui_Month, lv_color_hex(0x6CF3F2), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_Month, 230, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_align(ui_Month, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_Month, &ui_font_ChillaxReg70full, LV_PART_MAIN | LV_STATE_DEFAULT);

@@ -13,16 +13,15 @@ extern "C" {
 // SCREEN: ui_Time
 extern void ui_Time_screen_init(void);
 extern void ui_Time_screen_destroy(void);
+extern void ui_event_Time(lv_event_t * e);
 extern lv_obj_t * ui_Time;
 extern lv_obj_t * ui_LabelHour;
 extern lv_obj_t * ui_LabelMinutes;
-extern lv_obj_t * ui_SecondBar;
 extern lv_obj_t * ui_LabelSeconds;
 // CUSTOM VARIABLES
 extern lv_obj_t * ui_Time;
 extern lv_obj_t * ui_LabelHour;
 extern lv_obj_t * ui_LabelMinutes;
-extern lv_obj_t * ui_SecondBar;
 
 #ifdef __cplusplus
 } /*extern "C"*/

@@ -9,6 +9,7 @@
 ///////////////////// VARIABLES ////////////////////
 lv_anim_t * RotatingSun_Animation(lv_obj_t * TargetObject, int delay);
 lv_anim_t * rotationtest_Animation(lv_obj_t * TargetObject, int delay);
+lv_anim_t * Blink_Animation(lv_obj_t * TargetObject, int delay);
 
 // EVENTS
 lv_obj_t * ui____initial_actions0;
@@ -71,6 +72,30 @@ lv_anim_t * rotationtest_Animation(lv_obj_t * TargetObject, int delay)
 
     return out_anim;
 }
+lv_anim_t * Blink_Animation(lv_obj_t * TargetObject, int delay)
+{
+    lv_anim_t * out_anim;
+    ui_anim_user_data_t * PropertyAnimation_0_user_data = lv_malloc(sizeof(ui_anim_user_data_t));
+    PropertyAnimation_0_user_data->target = TargetObject;
+    PropertyAnimation_0_user_data->val = -1;
+    lv_anim_t PropertyAnimation_0;
+    lv_anim_init(&PropertyAnimation_0);
+    lv_anim_set_duration(&PropertyAnimation_0, 500);
+    lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+    lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_opacity);
+    lv_anim_set_values(&PropertyAnimation_0, 0, 255);
+    lv_anim_set_path_cb(&PropertyAnimation_0, lv_anim_path_ease_in);
+    lv_anim_set_delay(&PropertyAnimation_0, delay + 0);
+    lv_anim_set_deleted_cb(&PropertyAnimation_0, _ui_anim_callback_free_user_data);
+    lv_anim_set_reverse_duration(&PropertyAnimation_0, 250);
+    lv_anim_set_reverse_delay(&PropertyAnimation_0, 250);
+    lv_anim_set_repeat_count(&PropertyAnimation_0, LV_ANIM_REPEAT_INFINITE);
+    lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+    lv_anim_set_early_apply(&PropertyAnimation_0, true);
+    out_anim = lv_anim_start(&PropertyAnimation_0);
+
+    return out_anim;
+}
 
 ///////////////////// FUNCTIONS ////////////////////
 
@@ -78,8 +103,6 @@ lv_anim_t * rotationtest_Animation(lv_obj_t * TargetObject, int delay)
 
 void ui_init(void)
 {
-    LV_EVENT_GET_COMP_CHILD = lv_event_register_id();
-
     lv_disp_t * dispp = lv_display_get_default();
     lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
                                                false, LV_FONT_DEFAULT);
@@ -88,6 +111,7 @@ void ui_init(void)
     ui_Day_Date_Month_screen_init();
     ui_Indoor_Weather_screen_init();
     ui_Outdoor_Weather_screen_init();
+    ui_AQIHumidity_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_Time);
 }
@@ -98,4 +122,5 @@ void ui_destroy(void)
     ui_Day_Date_Month_screen_destroy();
     ui_Indoor_Weather_screen_destroy();
     ui_Outdoor_Weather_screen_destroy();
+    ui_AQIHumidity_screen_destroy();
 }

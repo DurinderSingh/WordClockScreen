@@ -26,7 +26,6 @@ extern lv_obj_t * ui_WeatherDesc;
 extern lv_obj_t * ui_Panel2;
 extern lv_obj_t * ui_OutdoorTemp;
 extern lv_obj_t * ui_Celcious;
-extern lv_obj_t * ui_OutdoorHumidity;
 // CUSTOM VARIABLES
 extern lv_obj_t * ui_Outdoor_Weather;
 extern lv_obj_t * ui_SunIcon;
@@ -37,7 +36,6 @@ extern lv_obj_t * ui_CloudyNightIcon;
 extern lv_obj_t * ui_WeatherDesc;
 extern lv_obj_t * ui_OutdoorTemp;
 extern lv_obj_t * ui_Celcious;
-extern lv_obj_t * ui_OutdoorHumidity;
 
 #ifdef __cplusplus
 } /*extern "C"*/
